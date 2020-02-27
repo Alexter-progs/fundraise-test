@@ -1,13 +1,21 @@
 <template>
     <div class="ButtonsGrid__container">
+        <template v-for="(prop, index) in buttonProps">
+            <Button
+                :key="index"
+                :text="prop.text"
+            />
+        </template>
     </div> 
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./Button.vue";
 
 @Component({
     components: {
+        Button
     }
 })
 export default class ButtonsGrid extends Vue {
