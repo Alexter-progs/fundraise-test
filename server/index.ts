@@ -1,11 +1,14 @@
 import * as Koa from 'koa';
 import * as Router from 'koa-router';
 import * as serve from 'koa-static';
+import * as bodyParser from 'koa-body';
 
 import * as path from 'path';
 
 const app = new Koa();
 const FRONTEND_APP_BUILD_PATH = path.resolve(__dirname, '../dist');
+
+app.use(bodyParser());
 
 app.use(serve(FRONTEND_APP_BUILD_PATH));
 
