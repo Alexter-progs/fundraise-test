@@ -1,29 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <DonationForm/>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+import { Component, Provide, Inject, Vue, PropSync } from "vue-property-decorator";
+import DonationForm from "./components/DonationForm.vue";
 
 @Component({
   components: {
-    HelloWorld
+    DonationForm
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+}
 </script>
 
 <style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
 }
 </style>
