@@ -20,9 +20,6 @@ app.use(async (ctx: any, next: any) => {
 });
 
 const router = new Router();
-router.get('/api/donations', async (ctx: any) => { 
-    ctx.body = '4000$';
-});
 
 router.post('/api/donate', async (ctx: any) => {
     const allowedCurrencies = ["USD", "EUR", "GBP", "RUB"];
@@ -32,8 +29,6 @@ router.post('/api/donate', async (ctx: any) => {
         ctx.body = JSON.stringify({"ok": true});
     }
 });
-
-
 
 app.use(router.routes());
 
