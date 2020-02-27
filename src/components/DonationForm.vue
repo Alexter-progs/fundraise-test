@@ -39,6 +39,7 @@ export default class DonationForm extends Vue {
     box-shadow: 0 0 2px #00000040;
     padding: 30px 30px 25px 30px;
     background-color: #f5f5f5;
+    max-width: 300px;
   }
 
   &__donateBtn {
