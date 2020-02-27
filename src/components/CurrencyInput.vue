@@ -1,5 +1,6 @@
 <template>
     <div class="CurrencyInput__container">
+        <div class="CurrencyInput__symbol">$</div>
         <input
             class="CurrencyInput__input"
         />
@@ -24,7 +25,9 @@ export default class Button extends Vue {
             height: 50px;
             display: flex;
             background-color: #fff;
-            box-sizing: content-box;
+            display: flex;
+            align-items: center;
+            padding: 1px 10px;
         }
 
         &__container:focus {
@@ -43,10 +46,17 @@ export default class Button extends Vue {
             caret-color: #7777de;
             color: #4c85db;
             font-size: 36px;
+            width: 100%;
         }
 
         &__input:focus {
             outline: none;
+        }
+
+        &__symbol {
+            font-size: 21px;
+            color: #515151;
+            margin-right: 5px;
         }
     }
 </style>
