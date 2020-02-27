@@ -118,10 +118,8 @@ export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
 
   async created() {
-    console.log('Created hello world');
-    const res = await fetch('/donations');
-    const donation = await res.text(); 
-    console.log(`You got donation of ${donation}`)
+    const res = await fetch('/api/donations');
+    const donation = await res.text();
   }
 }
 </script>
