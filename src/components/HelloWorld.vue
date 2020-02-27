@@ -116,6 +116,13 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+
+  async created() {
+    console.log('Created hello world');
+    const res = await fetch('/donations');
+    const donation = await res.text(); 
+    console.log(`You got donation of ${donation}`)
+  }
 }
 </script>
 

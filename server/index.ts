@@ -12,8 +12,8 @@ app.use(async (ctx: any, next: any) => {
 });
 
 const router = new Router();
-router.get('/*', async (ctx: any) => { 
-    ctx.body = 'Hello my friend';
+router.get('/api/donations', async (ctx: any) => { 
+    ctx.body = '4000$';
 });
 
 app.use(router.routes());
