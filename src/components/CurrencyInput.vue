@@ -4,6 +4,12 @@
         <input
             class="CurrencyInput__input"
         />
+        <select class=CurrencyInput__selector>
+            <option value="1">USD</option>
+            <option value="2">EUR</option>
+            <option value="3">GBP</option>
+            <option value="4">RUB</option>
+        </select>
     </div>
 </template>
 
@@ -27,7 +33,7 @@ export default class Button extends Vue {
             background-color: #fff;
             display: flex;
             align-items: center;
-            padding: 1px 10px;
+            padding: 0 0 0 10px;
         }
 
         &__container:focus {
@@ -35,9 +41,10 @@ export default class Button extends Vue {
         }
 
         &__input {
+            font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
             display: block;
             border: none;
-            padding: 0;
+            padding: 0 10px 0 10px;
             margin: 0;
             background-color: transparent;
             background-image: none;
@@ -56,7 +63,32 @@ export default class Button extends Vue {
         &__symbol {
             font-size: 21px;
             color: #515151;
-            margin-right: 5px;
+            cursor: default;
+        }
+
+        &__selector {
+            font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+            border: none;
+            font-size: 16px;
+            line-height: 17px;
+            border-radius: 0 5px 5px 0; 
+            height: 50px;
+            color: #515151;
+            cursor: pointer;
+        }
+
+        &__selector > option {
+            background-color: white;
+            color: initial;
+        }
+
+        &__selector:focus {
+            border: none;
+            outline: none;
+        }
+
+        &__selector:hover {
+            background-color: #ededed;
         }
     }
 </style>
