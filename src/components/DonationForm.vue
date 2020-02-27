@@ -1,15 +1,18 @@
 <template>
     <div class="DonationForm__container">
       <div>
+        <ButtonsGrid rows="3" columns="3"/>
       </div>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import ButtonsGrid from "./ButtonsGrid.vue";
 
 @Component({
   components: {
+    ButtonsGrid,
   }
 })
 export default class DonationForm extends Vue {
