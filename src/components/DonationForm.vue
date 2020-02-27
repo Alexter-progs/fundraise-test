@@ -2,6 +2,7 @@
     <div class="DonationForm__container">
       <div>
         <ButtonsGrid rows="3" columns="3"/>
+        <CurrencyInput class="DonationForm__currencyInput"/>
         <Button text="Donate" class="DonationForm__donateBtn"/>
       </div>
     </div>
@@ -11,11 +12,13 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import ButtonsGrid from "./ButtonsGrid.vue";
 import Button from "./Button.vue";
+import CurrencyInput from "./CurrencyInput.vue";
 
 @Component({
   components: {
     ButtonsGrid,
-    Button
+    Button,
+    CurrencyInput
   }
 })
 export default class DonationForm extends Vue {
@@ -48,6 +51,10 @@ export default class DonationForm extends Vue {
 
   &__donateBtn:hover {
       background-color: #2e71d5;
+  }
+
+  &__currencyInput {
+    margin-top: 20px;
   }
 }
 </style>
