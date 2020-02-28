@@ -23,5 +23,9 @@ export const mutations: MutationTree<DonationFormState> = {
   },
   presetSelected(state, value) {
     state.currentPreset = value;
+    state.currencyInputValue = value;
+  },
+  donated(state, value) {
+      state.isDonated = value;
   }
 };

@@ -15,7 +15,8 @@ export const state: DonationFormState = {
     { name: "Russian Ruble", code: "RUB", symbol: "₽", rate: 63.461993 }
   ],
   amountPresets: [40, 100, 200, 1000, 2500, 5000],
-  currentPreset: 40
+  currentPreset: 40,
+  isDonated: false
 };
 
 const namespaced = true;

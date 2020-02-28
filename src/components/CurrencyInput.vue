@@ -81,7 +81,7 @@ export default class CurrencyInput extends Vue {
 
     if (regex.test(newValue.toString())) {
       this.inputValue = newValue;
-      this.changedCurrencyInputValue(event.target.value);
+      this.changedCurrencyInputValue(parseInt(event.target.value));
     } else {
       let newv: string = newValue.toString();
       newv = newv.slice(0, newv.length - 1);
