@@ -1,5 +1,15 @@
 # fundraise-test
 
+## Quick start
+
+```
+1. yarn install
+2. yarn build
+3. Go to ./server/config.ts and set your desired web server port;mongodb url;dbname;
+4. yarn server:run
+4. Open at localhost:{YOUR_PORT || 3000}
+```
+
 ## Project setup
 ```
 yarn install
