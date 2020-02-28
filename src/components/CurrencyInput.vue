@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch, PropSync, Prop } from "vue-property-decorator";
+import { Component, Vue, Watch, PropSync } from "vue-property-decorator";
 import { State, Mutation } from "vuex-class";
 import { DonationFormState } from "@/store/donationForm/types";
 
@@ -46,7 +46,6 @@ export default class CurrencyInput extends Vue {
   @Watch("donationForm.currentPreset")
   onCurrentPresetChange(val: number) {
     this.inputValue = val;
-    console.log("currentPresetChanged: ", this.inputValue, val);
   }
 
   @Watch("donationForm.currencyInputValue")
@@ -82,7 +81,6 @@ export default class CurrencyInput extends Vue {
 
     if (regex.test(newValue.toString())) {
       this.inputValue = newValue;
-      console.log("input handler: ", newValue, this.inputValue);
       this.changedCurrencyInputValue(event.target.value);
     } else {
       let newv: string = newValue.toString();
