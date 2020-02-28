@@ -8,18 +8,60 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, PropSync } from "vue-property-decorator";
+import { Component, Prop, Vue, PropSync, Watch } from "vue-property-decorator";
+import { State, Mutation } from 'vuex-class';
+import { DonationFormState } from "@/store/donationForm/types";
+
+const namespace = "donationForm";
 
 @Component
 export default class Button extends Vue {
-   @Prop({default: ''}) 
-   private readonly text?: string;
-   @PropSync('isButtonActive', {default: false}) 
-   private isActive?: boolean;
+    @State(namespace) donationForm!: DonationFormState;
+    @Mutation('presetSelected', {namespace}) presetSelected!: any;
 
-   private clickHandler(): void {
-       console.log(1);
-   }
+    @Watch('donationForm.activeCurrency')
+    onActiveCurrencyChange(val: number, oldVal: number) {
+        if (val != this.amount) {
+            this.isActive = false;
+        } else {
+            this.isActive = true;
+        }
+    }
+
+    @Watch('donationForm.currentPreset')
+    onCurrencyCurrentPresetChange(val: number, oldVal: number) {
+        if (val != this.amount) {
+            this.isActive = false;
+        }
+    }
+
+    @Watch('donationForm.currencyInputValue')
+    onCurrencyInputValueChange(val: number, oldVal: number) {
+        if (val != this.amount) {
+            this.isActive = false;
+        } else {
+            this.isActive = true;
+        }
+    }
+
+    @Prop({default: ''}) 
+    private readonly text!: string;
+    
+    @Prop({default: 40}) 
+    private amount!: number;
+
+    private isActive = false;
+
+    created() {
+        if (this.amount === this.donationForm.currentPreset) {
+            this.isActive = true;
+        }
+    }
+
+    private clickHandler(): void {
+        this.presetSelected(this.amount);
+        this.isActive = true;
+    }
 }
 </script>
 
