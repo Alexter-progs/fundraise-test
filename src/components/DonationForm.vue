@@ -16,7 +16,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Action, State } from "vuex-class";
-import { DonationFormState } from '@/store/donationForm/types';
+import { DonationFormState } from "@/store/donationForm/types";
 
 import ButtonsGrid from "./ButtonsGrid.vue";
 import Button from "./Button.vue";
@@ -33,7 +33,7 @@ const namespace = "donationForm";
 })
 export default class DonationForm extends Vue {
   @State(namespace) donationForm!: DonationFormState;
-  @Action('donate', {namespace}) donate: any;
+  @Action("donate", { namespace }) donate: any;
   @Prop() private readonly msg!: string;
 
   donateClickHandler() {
@@ -61,7 +61,7 @@ export default class DonationForm extends Vue {
     margin-top: 30px;
 
     height: 40px;
-    border-radius: 5px; 
+    border-radius: 5px;
     box-shadow: 0 1px 3px #00000040;
     cursor: pointer;
     user-select: none;

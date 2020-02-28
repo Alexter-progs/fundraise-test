@@ -11,16 +11,16 @@ export const actions: ActionTree<DonationFormState, RootState> = {
 
     console.log(data);
 
-    await fetch('/api/donate', { 
+    await fetch("/api/donate", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
     });
 
     //console.log('123');
 
-    commit('donated', true);
+    commit("donated", true);
   }
 };
