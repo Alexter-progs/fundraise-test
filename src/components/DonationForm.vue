@@ -1,11 +1,11 @@
 <template>
-    <div class="DonationForm__container">
-      <div>
-        <ButtonsGrid rows="3" columns="3"/>
-        <CurrencyInput class="DonationForm__currencyInput"/>
-        <Button text="Donate" class="DonationForm__donateBtn"/>
-      </div>
+  <div class="DonationForm__container">
+    <div>
+      <ButtonsGrid rows="3" columns="3" />
+      <CurrencyInput class="DonationForm__currencyInput" />
+      <Button text="Donate" class="DonationForm__donateBtn" />
     </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -23,9 +23,9 @@ import CurrencyInput from "./CurrencyInput.vue";
 })
 export default class DonationForm extends Vue {
   @Prop() private readonly msg!: string;
-  
+
   async created() {
-    const res = await fetch('/api/donations');
+    const res = await fetch("/api/donations");
     const donation = await res.text();
   }
 }
@@ -43,15 +43,15 @@ export default class DonationForm extends Vue {
   }
 
   &__donateBtn {
-        text-transform: uppercase;
-        font-weight: bold;
-        background-color: #4c85db;
-        color: white;
-        margin-top: 30px;
-    }
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #4c85db;
+    color: white;
+    margin-top: 30px;
+  }
 
   &__donateBtn:hover {
-      background-color: #2e71d5;
+    background-color: #2e71d5;
   }
 
   &__currencyInput {

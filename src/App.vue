@@ -1,11 +1,17 @@
 <template>
   <div id="app">
-    <DonationForm/>
+    <DonationForm />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Provide, Inject, Vue, PropSync } from "vue-property-decorator";
+import {
+  Component,
+  Provide,
+  Inject,
+  Vue,
+  PropSync
+} from "vue-property-decorator";
 import DonationForm from "./components/DonationForm.vue";
 
 @Component({
@@ -13,8 +19,7 @@ import DonationForm from "./components/DonationForm.vue";
     DonationForm
   }
 })
-export default class App extends Vue {
-}
+export default class App extends Vue {}
 </script>
 
 <style lang="less">
