@@ -1,24 +1,89 @@
 <template>
     <div class="CurrencyInput__container">
-        <div class="CurrencyInput__symbol">$</div>
+        <div class="CurrencyInput__symbol">{{donationForm.activeCurrency.symbol}}</div>
         <input
             class="CurrencyInput__input"
+            type="text"
+            pattern="[0-9]"
+            maxLength="10"
+            @input="inputHandler($event)"
+            :value="inputValue"
+            :placeholder="placeholder"
+            @blur="blurHandler()"
+            @focus="focusHandler()"
         />
-        <select class=CurrencyInput__selector>
-            <option value="1">USD</option>
-            <option value="2">EUR</option>
-            <option value="3">GBP</option>
-            <option value="4">RUB</option>
+        <select class=CurrencyInput__selector @change="selectorChangeHandler($event)">
+            <option 
+                v-for="item in donationForm.currencies" 
+                :key="item.code" 
+                :value="item.code"
+            >
+                {{item.code}}
+            </option>
         </select>
     </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch, PropSync, Prop } from "vue-property-decorator";
+import { State, Mutation } from 'vuex-class';
+import { DonationFormState } from "@/store/donationForm/types";
+
+const namespace = "donationForm";
 
 @Component
-export default class Button extends Vue {
-   
+export default class CurrencyInput extends Vue {
+    @State(namespace) donationForm!: DonationFormState;
+    @Mutation('changedActiveCurrency', {namespace}) changedActiveCurrency!: any;
+    @Mutation('changedCurrencyInputValue', {namespace}) changedCurrencyInputValue!: any;
+
+    @Watch('donationForm.currentPreset')
+    onCurrentPresetChange(val: number) {
+        this.inputValue = val;
+        console.log('currentPresetChanged: ', this.inputValue, val);
+    }
+
+    @Watch('donationForm.currencyInputValue')
+    onCurrencyInputValueChange(val: number, oldVal: number) {
+        this.inputValue = val;
+    }
+
+    private inputValue = 0;
+    private placeholder = 'Other';
+
+    created() {
+        this.inputValue = this.donationForm.currentPreset;
+    }
+
+    focusHandler() {
+        this.placeholder = '';
+    }
+
+    blurHandler() {
+        this.placeholder = 'Other';
+    }
+
+    selectorChangeHandler(event: any) {
+        this.changedActiveCurrency(event.target.value);
+    }
+
+    inputHandler(event: any) {
+        const newValue = event.target.value;
+        const regex = /^\d*[1-9]\d*$/;
+        if (!newValue) {
+            this.changedCurrencyInputValue('');
+        }
+
+        if (regex.test(newValue.toString())) {
+            this.inputValue = newValue;
+            console.log('input handler: ', newValue, this.inputValue)
+            this.changedCurrencyInputValue(event.target.value);
+        } else {
+            let newv: string = newValue.toString();
+            newv = newv.slice(0, newv.length - 1);
+            event.target.value = parseInt(newv);
+        }
+    }
 }
 </script>
 

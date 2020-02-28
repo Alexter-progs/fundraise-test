@@ -1,11 +1,17 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { StoreOptions } from "vuex";
+import { RootState } from './types';
+import { donationForm } from './donationForm/index';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store: StoreOptions<RootState> = {
   state: {},
   mutations: {},
   actions: {},
-  modules: {}
-});
+  modules: {
+    donationForm
+  }
+}
+
+export default new Vuex.Store(store);
