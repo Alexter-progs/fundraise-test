@@ -11,4 +11,5 @@ export interface DonationFormState {
   currencies: Currency[];
   amountPresets: number[];
   currentPreset: number;
+  isDonated: boolean;
 }
